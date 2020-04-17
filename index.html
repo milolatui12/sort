@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+        <div class="container">
+             <div class="input">
+                <form>
+                    INPUT: <input id="inputfield" type="text" name="input" placeholder="INPUT">
+                </form>
+                <button id="reset">reset</button>
+            </div>
+            <div>
+                <div class="dropdown">
+                    <button value="Selectionsort" class="dropbtn">Selectionsort</button>
+                    <div id="Selectionsort" class="dropdown-content">
+                        <a id="ssBtS" href="#">big to small</a>
+                        <a id="ssStB" href="#">small to big</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button value="Insertionsort" class="dropbtn">Insertionsort</button>
+                    <div id="Insertionsort" class="dropdown-content">
+                            <a id="isBtS" href="#">big to small</a>
+                            <a id="isStB" href="#">small to big</a>
+                    </div>
+                </div>
+            </div> 
+            <h4>KẾT QUẢ CÁC BƯỚC</h4>
+            <div id="result" class="result"></div>
+            <div id="direction" class="direction">
+                <h4>hướng dẫn:</h4>
+                <p>B1: nhập mảng vào trường INPUT (phân cách nhau bởi dấu ',')</p>
+                <p>B2: chọn cách sắp xếp trong ô màu xanh</p>
+                <p>nhấp reset để xóa kết quả cũ</p>
+            </div>
+        </div>
+               
+
+        <script src="script.js"></script>
+</body>
+</html>
