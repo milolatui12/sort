@@ -26,6 +26,8 @@ let ssBtS = document.getElementById("ssBtS");
 let ssStB = document.getElementById("ssStB");
 let isBtS = document.getElementById("isBtS");
 let isStB = document.getElementById("isStB");
+let bBtS = document.getElementById("bBtS");
+let bStB = document.getElementById("bStB");
 let resetBt = document.getElementById("reset");
 let resultField = document.getElementById("result");
 let input = document.getElementById("inputfield");
@@ -39,7 +41,7 @@ function printResult(arr) {
 }
 ///////////////////THUẬT TOÁN////////////////////
 function selectionSort(array, condition) {
-    let min, tg;
+    let min, temp;
     for(i = 0; i < array.length; i++) {
       min = i;
       for(j = i + 1; j < array.length; j++) {
@@ -47,9 +49,9 @@ function selectionSort(array, condition) {
           min = j;
         }
         if(min != i) {
-          tg = array[min];
+          temp = array[min];
           array[min] = array[i];
-          array[i] = tg;
+          array[i] = temp;
           min = i;
           printResult(array);
         }
@@ -69,6 +71,19 @@ function insertionSort(array, condition) {
         printResult(array);
     }
 }
+function bubbleSort(array, condition) {
+    let temp;
+    for(i = 0; i < array.length - 1; i++) {
+        for(j = array.length - 1; j > i; j--) {
+            if(condition(array[j], array[j - 1])) {
+                temp = array[j];
+                array[j] = array[j-1];
+                array[j-1] = temp;
+            }
+            printResult(array);
+        }
+    }
+}
 ///////////////////THUẬT TOÁN////////////////////
 
 function smaller(first, second) {
@@ -84,23 +99,17 @@ function greater(first, second) {
     return false;
 }
 
-function ssSortBtS() {
-    selectionSort(input.value.replace(/\s+/g, '').split(',').map(str => Number(str)), greater);
-}
-function ssSortStB() {
-    selectionSort(input.value.replace(/\s+/g, '').split(',').map(str => Number(str)), smaller);
-}
-function isSortBtS() {
-    insertionSort(input.value.replace(/\s+/g, '').split(',').map(str => Number(str)), smaller);
-}
-function isSortStB() {
-    insertionSort(input.value.replace(/\s+/g, '').split(',').map(str => Number(str)), greater);
+function sort(type, condition) {
+    let arr = input.value.replace(/\s+/g, '').split(',').map(str => Number(str));
+    type(arr, condition);
 }
 
-ssBtS.addEventListener("click", ssSortBtS)
-ssStB.addEventListener("click", ssSortStB)
-isBtS.addEventListener("click", isSortBtS)
-isStB.addEventListener("click", isSortStB)
+ssBtS.addEventListener("click", () => sort(selectionSort, greater))
+ssStB.addEventListener("click", () => sort(selectionSort, smaller))
+isBtS.addEventListener("click", () => sort(insertionSort, smaller))
+isStB.addEventListener("click", () => sort(insertionSort, greater))
+bBtS.addEventListener("click", () => sort(bubbleSort, greater))
+bStB.addEventListener("click", () => sort(bubbleSort, smaller))
 resetBt.addEventListener("click", function() {
     resultField.innerHTML = "";
 })

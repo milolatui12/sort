@@ -4,6 +4,11 @@
     text-align: center;
 }
 
+.dropbar {
+    display: flex;
+    justify-content: center;
+}
+
 .dropbtn {
     background-color: rgb(75, 81, 173);
     color: white;
